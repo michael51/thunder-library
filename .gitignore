@@ -1,7 +1,3 @@
 .idea/
 vendor
-thinkphp
-application
-config
-public
-runtime
+composer.lock
