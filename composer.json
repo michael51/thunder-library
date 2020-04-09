@@ -10,11 +10,13 @@
         }
     ],
     "require": {
-        "php":">=7.0.0"
+        "php":">=7.0.0",
+        "ext-curl": "*",
+        "ext-json": "*"
     },
     "autoload": {
         "psr-4":{
-            "thunder_library\\":"src"
+            "MichaelRay\\ThunderLibrary\\":"src"
         }
     }
 }
