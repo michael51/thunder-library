@@ -54,21 +54,6 @@ class Util
 	}
 
 	/**
-	 * 生成一个唯一的23位hashID
-	 * Author: MichaelRay
-	 * Date: 2020/4/9
-	 * Time: 18:05
-	 * @return string
-	 */
-	public static function createUniq23HashId($prefix = ''){
-		$str = uniqid($prefix, true);
-		$arr = explode(".", $str);
-		$str = $arr[0] . $arr[1];
-
-		return $str;
-	}
-
-	/**
 	 * 基于时间戳生成唯一数字编码（通常用于产品编号或者订单编号）
 	 * Author: MichaelRay
 	 * Date: 2020/3/27
@@ -100,5 +85,45 @@ class Util
 		$order_number = $sec . $microTime;
 
 		return $prefix . $order_number . rand(100, 999);
+	}
+
+	/**
+	 * 创建一个包含大小写的hash(推荐)
+	 * Author: MichaelRay
+	 * Date: 2020/4/13
+	 * Time: 21:44
+	 * @param string $src
+	 * @param int $length
+	 * @return bool|string
+	 */
+	public static function createHash ($src='', $length = 8)
+	{
+		if(!$src) $src = microtime();
+
+		$md5 = md5($src, true);
+		$pos = 0;
+		$res = "";
+		while (strlen($res) < $length && ($bin = substr($md5, $pos, 4)) != "") {
+			$uint = sprintf("%u", unpack("Nint", $bin)['int']);
+			$res .= self::handleHash($uint);
+			$pos += 4;
+		}
+
+		return substr($res, 0, $length);
+	}
+
+	private static function handleHash ($str)
+	{
+		$table = array_merge(range(0, 9), range('A', "Z"), range('a', "z"));
+
+		$arr62 = [];
+		$div = $str;
+		do {
+			$mod = $div % 62;
+			array_unshift($arr62, $table[ $mod ]);
+			$div = intval($div / 62);
+		} while ($div != 0);
+
+		return implode("", $arr62);
 	}
 }
