@@ -92,15 +92,15 @@ class Util
 	 * Author: MichaelRay
 	 * Date: 2020/4/13
 	 * Time: 21:44
-	 * @param string $src
+	 * @param string $str
 	 * @param int $length
 	 * @return bool|string
 	 */
-	public static function createHash ($src='', $length = 8)
+	public static function createHash ($str='', $length = 8)
 	{
-		if(!$src) $src = microtime();
+		if(!$str) $str = microtime();
 
-		$md5 = md5($src, true);
+		$md5 = md5($str, true);
 		$pos = 0;
 		$res = "";
 		while (strlen($res) < $length && ($bin = substr($md5, $pos, 4)) != "") {
