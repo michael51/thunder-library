@@ -61,19 +61,19 @@ class Util
 
 
 	/**
-	 * 生成唯一编码
+	 * 急于时间戳生成唯一编码
 	 * Author: MichaelRay
 	 * Date: 2020/3/27
 	 * Time: 17:56
 	 * @param $length
 	 * @return string
 	 */
-	public static function getUniquelyNumberCode($length){
+	public static function getUniquelyNumberCode($length, $prefix){
 		$time = time() . '';
 		if ($length < 10) $length = 10;
 		$string = ($time[0] + $time[2]) . substr($time, 2) . rand(0, 9);
 		while (strlen($string) < $length) $string .= rand(0, 9);
-		return $string;
+		return $prefix.$string;
 	}
 
 	/**
@@ -83,7 +83,7 @@ class Util
 	 * Time: 17:24
 	 * @return string
 	 */
-	public static function getHash(){
+	public static function getUniq32HashId(){
 		$chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()+-';
 		$random = $chars[mt_rand(0,73)].$chars[mt_rand(0,73)].$chars[mt_rand(0,73)].$chars[mt_rand(0,73)].$chars[mt_rand(0,73)];//Random 5 times
 		$content = uniqid().$random;  // 类似 5443e09c27bf4aB4uT
@@ -91,13 +91,13 @@ class Util
 	}
 
 	/**
-	 * 生成一个唯一的15位hashID
+	 * 生成一个唯一的15位hashID（由于急于时间戳，唯一性欠佳，可用于后台更新不连续情况）
 	 * Author: MichaelRay
 	 * Date: 2020/4/9
 	 * Time: 18:05
 	 * @return string
 	 */
-	public static function getUniqHashId(){
+	public static function getUniq15HashId(){
 		return uniqid(mt_rand(10, 100));
 	}
 }
