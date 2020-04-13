@@ -110,7 +110,7 @@ class Util
 			$pos += 4;
 		}
 
-		return $prefix.substr($res, 0, $length).$suffix;
+		return $prefix . $res . $suffix;
 	}
 
 	private static function handleHash ($str)
