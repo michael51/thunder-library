@@ -14,4 +14,3 @@ echo '产生32位hash：'.Util::createUniq32HashId().PHP_EOL;
 echo '产生编号1：'.Util::createUniquelyNumberCode(19,2).PHP_EOL;
 echo '产生编号2：'.Util::createUniquelyNumberCodeByMicroTime(2).PHP_EOL;
 echo '产生大小混合hash：'.Util::createHash().PHP_EOL;
-echo '产生大小混合hash：'.Util::createHash().PHP_EOL;

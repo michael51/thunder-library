@@ -89,6 +89,7 @@ class Util
 
 	/**
 	 * 创建一个包含大小写的hash(推荐)
+	 * 最长23
 	 * Author: MichaelRay
 	 * Date: 2020/4/13
 	 * Time: 21:44
@@ -96,7 +97,7 @@ class Util
 	 * @param int $length
 	 * @return bool|string
 	 */
-	public static function createHash ($str='', $length = 8)
+	public static function createHash ($str = '', $length = 23, $prefix = '', $suffix = '')
 	{
 		if(!$str) $str = microtime();
 
@@ -109,7 +110,7 @@ class Util
 			$pos += 4;
 		}
 
-		return substr($res, 0, $length);
+		return $prefix.substr($res, 0, $length).$suffix;
 	}
 
 	private static function handleHash ($str)
