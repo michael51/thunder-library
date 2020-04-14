@@ -39,6 +39,11 @@ class Util
 		}
 	}
 
+	public static function getThisUrl ()
+	{
+		return $_SERVER["REQUEST_SCHEME"] . '://' . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+	}
+
 	/**
 	 * 生成唯一32位hash
 	 * Author: MichaelRay
