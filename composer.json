@@ -12,8 +12,9 @@
     "require": {
         "php":">=7.0.0",
         "ext-curl": "*",
-        "ext-json": "*"
-    },
+        "ext-json": "*",
+		"ext-openssl": "*"
+	},
     "autoload": {
         "psr-4":{
             "MichaelRay\\ThunderLibrary\\":"src"
