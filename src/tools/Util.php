@@ -104,21 +104,21 @@ class Util
 	 */
 	public static function createHash ($str = '', $length = 23, $prefix = '', $suffix = '')
 	{
-		if(!$str) $str = microtime();
+		if ( !$str) $str = rand(0, 9999) . microtime();
 
 		$md5 = md5($str, true);
 		$pos = 0;
 		$res = "";
 		while (strlen($res) < $length && ($bin = substr($md5, $pos, 4)) != "") {
 			$uint = sprintf("%u", unpack("Nint", $bin)['int']);
-			$res .= self::handleHash($uint);
+			$res .= self::_handleHash($uint);
 			$pos += 4;
 		}
 
 		return $prefix . $res . $suffix;
 	}
 
-	private static function handleHash ($str)
+	private static function _handleHash ($str)
 	{
 		$table = array_merge(range(0, 9), range('A', "Z"), range('a', "z"));
 
