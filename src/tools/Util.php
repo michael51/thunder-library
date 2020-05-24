@@ -66,12 +66,14 @@ class Util
 	 * @param $length
 	 * @return string
 	 */
-	public static function createUniquelyNumberCode($length, $prefix){
+	public static function createUniquelyNumberCode ($length = 10, $prefix = '')
+	{
 		$time = time() . '';
 		if ($length < 10) $length = 10;
 		$string = ($time[0] + $time[2]) . substr($time, 2) . rand(0, 9);
 		while (strlen($string) < $length) $string .= rand(0, 9);
-		return $prefix.$string;
+
+		return $prefix . $string;
 	}
 
 	/**
