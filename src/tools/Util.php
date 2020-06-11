@@ -134,4 +134,17 @@ class Util
 
 		return implode("", $arr62);
 	}
+
+	public static function emote ($emoteStr)
+	{
+		//将字符串组合成json格式  
+		$emoteStr = '["' . $emoteStr . '"]';
+		$emoteArr = json_decode($emoteStr, true);
+
+		if (count($emoteArr) == 1) {
+			return $emoteArr[0];
+		} else {
+			return null;
+		}
+	}
 }
