@@ -135,7 +135,7 @@ class Util
 		return implode("", $arr62);
 	}
 
-	public static function emote ($emoteStr)
+	public static function showEmote ($emoteStr)
 	{
 		//将字符串组合成json格式  
 		$emoteStr = '["' . $emoteStr . '"]';
@@ -146,5 +146,10 @@ class Util
 		} else {
 			return null;
 		}
+	}
+
+	public static function getFileHash ($fileName, $type = 'sha1')
+	{
+		return hash_file($type, $fileName);
 	}
 }
