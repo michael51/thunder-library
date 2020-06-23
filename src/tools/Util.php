@@ -152,4 +152,39 @@ class Util
 	{
 		return hash_file($type, $fileName);
 	}
+
+	public static function isWechat ()
+	{
+		if (strpos($_SERVER['HTTP_USER_AGENT'],
+				'MicroMessenger') !== false) {
+			return true;
+		}
+
+		return false;
+	}
+
+	public static function isMobile ()
+	{
+		$agent = strtolower($_SERVER['HTTP_USER_AGENT']);
+		$isPc = (strpos($agent, 'windows nt')) ? true : false;
+		$isMac = (strpos($agent, 'mac os')) ? true : false;
+		$isIphone = (strpos($agent, 'iphone')) ? true : false;
+		$isAndroid = (strpos($agent, 'android')) ? true : false;
+		$isIPad = (strpos($agent, 'ipad')) ? true : false;
+		if ($isPc) {
+			return false;
+		}
+		if ($isMac) {
+			return true;
+		}
+		if ($isIphone) {
+			return true;
+		}
+		if ($isAndroid) {
+			return true;
+		}
+		if ($isIPad) {
+			return true;
+		}
+	}
 }
